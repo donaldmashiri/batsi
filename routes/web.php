@@ -23,3 +23,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('home');
 Route::resource('drivers', \App\Http\Controllers\DriverController::class,);
 Route::resource('activities', \App\Http\Controllers\ActivityController::class,);
+
+Route::post('/activities/import', [\App\Http\Controllers\ActivityController::class, 'import'])->name('activities.import');

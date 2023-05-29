@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>ZINARA LANE DETECTION </title>
+    <title>Batsi</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('img/zinara2.png') }}">
 
     <!-- Custom fonts for this template-->

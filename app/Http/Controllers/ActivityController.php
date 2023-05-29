@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\ActivityImport;
 use App\Models\Activity;
+use Maatwebsite\Excel\Excel;
 use Illuminate\Http\Request;
 
 class ActivityController extends Controller
@@ -13,6 +15,15 @@ class ActivityController extends Controller
     public function index()
     {
         return view('activities.index')->with('activities', Activity::all());
+    }
+
+    public function import(Request $request)
+    {
+        $file = $request->file('file');
+
+        \Maatwebsite\Excel\Facades\Excel::import(new ActivityImport(), $file);
+
+        return back()->withStatus('Excel file imported successfully');
     }
 
     /**

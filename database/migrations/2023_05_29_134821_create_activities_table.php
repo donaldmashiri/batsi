@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('activities', function (Blueprint $table) {
             $table->id();
+            $table->integer('customer_phone');
+            $table->string('customer_name');
+            $table->integer('driver_id')->nullable();
+            $table->string('shipment_date');
+            $table->string('shipment_status');
+            $table->string('origin_address');
+            $table->string('destination_address');
             $table->timestamps();
         });
     }
