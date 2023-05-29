@@ -19,5 +19,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('home');
 Route::resource('drivers', \App\Http\Controllers\DriverController::class,);
+Route::resource('activities', \App\Http\Controllers\ActivityController::class,);

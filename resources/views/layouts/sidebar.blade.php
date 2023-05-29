@@ -4,6 +4,9 @@
 <li class="nav-item ">
     <a class="nav-link collapsed " href="{{ route('drivers.index') }}"><i class="fas fa-fw fa-car"></i>Drivers</a>
 </li>
+<li class="nav-item ">
+    <a class="nav-link collapsed " href="{{ route('activities.index') }}"><i class="fas fa-fw fa-landmark"></i>Activity</a>
+</li>
 {{--@if(Auth::user()->role === "admin")--}}
 
 {{--    <li class="nav-item ">--}}

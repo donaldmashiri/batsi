@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Driver;
+use App\Models\Activity;
 use Illuminate\Http\Request;
 
-class DriverController extends Controller
+class ActivityController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('drivers.index')->with('drivers', Driver::all());
+        return view('activities.index')->with('activities', Activity::all());
     }
 
     /**
@@ -20,7 +20,7 @@ class DriverController extends Controller
      */
     public function create()
     {
-        //
+        return view('activities.create');
     }
 
     /**
@@ -28,23 +28,7 @@ class DriverController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:drivers'],
-            'license_number' => ['required', 'string', 'max:14', 'unique:drivers'],
-            'address' => ['required', 'string', 'max:255'],
-            'phone_number' => ['required', 'string', 'max:255', 'unique:drivers'],
-        ]);
-
-        Driver::create([
-            "name" => request('name'),
-            "email" => request('email'),
-            "license_number" => request('license_number'),
-            "address" => request('address'),
-            "phone_number" => request('phone_number'),
-        ]);
-
-        return redirect()->back()->with('success', 'Driver Successfully Added.');
+        //
     }
 
     /**

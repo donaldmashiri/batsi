@@ -12,9 +12,9 @@ class Driver extends Model
     protected $fillable = [
         'name',
         'email',
-        'dob',
+        'phone_number',
         'address',
-        'license_no',
+        'license_number',
     ];
 
 }
