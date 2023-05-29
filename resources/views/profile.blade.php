@@ -15,13 +15,13 @@
             <div class="col-xl-8 col-lg-7">
                 <div class="card shadow mb-4">
                     <!-- Card Header - Dropdown -->
-                    <div
-                        class="card-header bg-gradient-success py-3 d-flex flex-row align-items-center justify-content-between">
+                    <div style="background-color: brown"
+                        class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                         <h6 class="m-0 font-weight-bold text-white">Profile</h6>
                     </div>
 
                     <!-- Card Body -->
-                    <div class="card-body">
+                    <div class="card-body bg-light">
                         <table class="table table-bordered table-striped">
                             <thead>
                             <tr>
@@ -38,7 +38,7 @@
                             </tr>
                             <tr>
                                 <th scope="col">Role</th>
-                                <td class="text-danger font-weight-bold"> {{ Auth::user()->role }}</td>
+                                <td class="text-danger font-weight-bold"> Admin</td>
                             </tr>
                             </thead>
                         </table>

@@ -20,3 +20,4 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('home');
+Route::resource('drivers', \App\Http\Controllers\DriverController::class,);
