@@ -31,14 +31,32 @@
                                 <thead class="bg-light">
                                 <tr>
                                     <th scope="col">#</th>
+                                    <th scope="col">Shipment Date</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Origin Address</th>
+                                    <th scope="col">Destination Address</th>
+                                    <th scope="col">Driver</th>
+                                    <th scope="col">Customer Name</th>
+                                    <th scope="col">Phone Number</th>
                                     <th scope="col">Date Added</th>
+                                    <th scope="col"></th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($activities as $activity)
                                     <tr>
                                         <th>{{ $activity->id }}</th>
+                                        <th>{{ $activity->shipment_date }}</th>
+                                        <th>{{ $activity->shipment_status }}</th>
+                                        <th>{{ $activity->origin_address }}</th>
+                                        <th>{{ $activity->destination_address }}</th>
+                                        <th>----</th>
+                                        <th>{{ $activity->customer_name }}</th>
+                                        <th>{{ $activity->customer_phone }}</th>
                                         <th>{{ $activity->created_at }}</th>
+                                        <th>
+                                            <a href="" class="btn btn-info">Generate driver</a>
+                                        </th>
                                     </tr>
                                 @endforeach
                                 </tbody>
