@@ -19,7 +19,7 @@
                         class="card-header bg-gradient-secondary py-3 d-flex flex-row align-items-center justify-content-between">
                         <h6 class="m-0 font-weight-bold text-white">Activities</h6>
                         <div class="justify-content-end">
-                            <a href="" class="btn btn-success btn-sm justify-content-end"  data-bs-toggle="modal" data-bs-target="#drivers"> Add New Driver</a>
+                            <a href="{{ route('activities.create') }}" class="btn btn-success btn-sm justify-content-end" > Create Activity</a>
                         </div>
                     </div>
 
@@ -55,7 +55,8 @@
                                         <th>{{ $activity->customer_phone }}</th>
                                         <th>{{ $activity->created_at }}</th>
                                         <th>
-                                            <a href="" class="btn btn-info">Generate driver</a>
+                                            <a href="" class="btn btn-danger btn-sm">Generate driver</a>
+                                            <a href="{{ route('activities.show', $activity->id) }}" class="btn btn-info btn-sm">View</a>
                                         </th>
                                     </tr>
                                 @endforeach

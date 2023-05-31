@@ -21,7 +21,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('home');
-Route::resource('drivers', \App\Http\Controllers\DriverController::class,);
+Route::resource('tasks', \App\Http\Controllers\TaskController::class,);
 Route::resource('activities', \App\Http\Controllers\ActivityController::class,);
+Route::resource('users', \App\Http\Controllers\UserController::class,);
 
 Route::post('/activities/import', [\App\Http\Controllers\ActivityController::class, 'import'])->name('activities.import');

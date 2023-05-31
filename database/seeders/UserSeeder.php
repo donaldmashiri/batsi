@@ -18,8 +18,11 @@ class UserSeeder extends Seeder
 
         if(!$user){
             User::create([
+                'role' => 'admin',
                 'name' => 'Admin',
                 'email' => 'admin@admin.com',
+                'license_no' => '---',
+                'phone_no' => '----',
                 'password' => Hash::make('password')
             ]);
         }

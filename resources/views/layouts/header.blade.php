@@ -10,8 +10,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Batsi</title>
-    <link rel="icon" type="image/x-icon" href="{{ asset('img/zinara2.png') }}">
+    <title>WilShar</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('img/chibuku.png') }}">
 
     <!-- Custom fonts for this template-->
     <link href="{{ asset('css/all.min.css') }}" rel="stylesheet" type="text/css">

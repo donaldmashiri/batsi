@@ -2,28 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Imports\ActivityImport;
-use App\Models\Activity;
-use Maatwebsite\Excel\Excel;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class ActivityController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('activities.index')->with('activities', Activity::all());
-    }
-
-    public function import(Request $request)
-    {
-        $file = $request->file('file');
-
-        \Maatwebsite\Excel\Facades\Excel::import(new ActivityImport(), $file);
-
-        return back()->withStatus('Excel file imported successfully');
+        return view('users.index')->with('users', User::all());
     }
 
     /**
@@ -31,7 +20,7 @@ class ActivityController extends Controller
      */
     public function create()
     {
-        return view('activities.create');
+        //
     }
 
     /**
@@ -45,10 +34,9 @@ class ActivityController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($activity)
+    public function show(string $id)
     {
-        $activity = \DB::table('activities')->where('id', $activity)->first();
-        return view('activities.show', compact('activity'));
+        //
     }
 
     /**

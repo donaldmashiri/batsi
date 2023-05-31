@@ -37,9 +37,14 @@
                                 <td> {{ Auth::user()->email }}</td>
                             </tr>
                             <tr>
-                                <th scope="col">Role</th>
-                                <td class="text-danger font-weight-bold"> Admin</td>
+                                <th scope="col">License_no</th>
+                                <td> {{ Auth::user()->license_no }}</td>
                             </tr>
+                            <tr>
+                                <th scope="col">Phone_no</th>
+                                <td> {{ Auth::user()->phone_no }}</td>
+                            </tr>
+
                             </thead>
                         </table>
                     </div>

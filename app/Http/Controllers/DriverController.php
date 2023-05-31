@@ -12,7 +12,7 @@ class DriverController extends Controller
      */
     public function index()
     {
-        return view('drivers.index')->with('drivers', Driver::all());
+        return view('tasks.index')->with('tasks', Driver::all());
     }
 
     /**
@@ -30,10 +30,10 @@ class DriverController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:drivers'],
-            'license_number' => ['required', 'string', 'max:14', 'unique:drivers'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:tasks'],
+            'license_number' => ['required', 'string', 'max:14', 'unique:tasks'],
             'address' => ['required', 'string', 'max:255'],
-            'phone_number' => ['required', 'string', 'max:255', 'unique:drivers'],
+            'phone_number' => ['required', 'string', 'max:255', 'unique:tasks'],
         ]);
 
         Driver::create([

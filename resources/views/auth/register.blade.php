@@ -4,15 +4,16 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="text-center">
-                    <img src="{{ asset('img/zinara1.jpeg') }}" height="220" alt="">
+            <div class="card bg-light">
+                <div class="text-center border border-dark m-3">
+                    <img src="{{ asset('img/chibuku.png') }}" height="70" alt="">
+                    <h1>WilShar Logistics Monitoring System</h1>
                 </div>
 
                 <div class="card-body">
                     @include('partials.errors')
 
-                    <form method="POST" action="{{ route('users.store') }}">
+                    <form method="POST" action="{{ route('register') }}">
                         @csrf
 
                         <div class="row mb-3">
@@ -44,12 +45,12 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="national_id" class="col-md-4 col-form-label text-md-end">{{ __('National ID') }}</label>
+                            <label for="license_no" class="col-md-4 col-form-label text-md-end">{{ __('License Number') }}</label>
 
                             <div class="col-md-6">
-                                <input minlength="6" id="national_id" type="text" class="form-control @error('national_id') is-invalid @enderror" name="national_id" value="{{ old('national_id') }}" required autocomplete="national_id">
+                                <input minlength="6" id="license_no" type="text" class="form-control @error('license_no') is-invalid @enderror" name="license_no" value="{{ old('license_no') }}" required autocomplete="license_no">
 
-                                @error('national_id')
+                                @error('license_no')
                                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -58,12 +59,12 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="dob" class="col-md-4 col-form-label text-md-end">{{ __('Date of Birth') }}</label>
+                            <label for="phone_no" class="col-md-4 col-form-label text-md-end">{{ __('Phone Number') }}</label>
 
                             <div class="col-md-6">
-                                <input id="dob" type="date" class="form-control @error('dob') is-invalid @enderror" name="dob" value="{{ old('dob') }}" required autocomplete="dob">
+                                <input id="phone_no" minlength="6" type="number" class="form-control @error('phone_no') is-invalid @enderror" name="phone_no" value="{{ old('phone_no') }}" required autocomplete="phone_no">
 
-                                @error('dob')
+                                @error('phone_no')
                                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

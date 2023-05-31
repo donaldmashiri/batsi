@@ -2,10 +2,18 @@
     <a class="nav-link collapsed " href="/profile"><i class="fas fa-fw fa-user"></i>Profile   </a>
 </li>
 <li class="nav-item ">
-    <a class="nav-link collapsed " href="{{ route('drivers.index') }}"><i class="fas fa-fw fa-car"></i>Drivers</a>
+    <a class="nav-link collapsed " href="{{ route('users.index') }}"><i class="fas fa-fw fa-car"></i>Drivers</a>
 </li>
 <li class="nav-item ">
-    <a class="nav-link collapsed " href="{{ route('activities.index') }}"><i class="fas fa-fw fa-landmark"></i>Activity</a>
+    <a class="nav-link collapsed " href="{{ route('tasks.index') }}"><i class="fas fa-fw fa-tasks"></i>Tasks</a>
+</li>
+
+<li class="nav-item ">
+    <a class="nav-link collapsed " href="#"><i class="fas fa-fw fa-landmark"></i>Activity</a>
+</li>
+
+<li class="nav-item ">
+    <a class="nav-link collapsed " href="#"><i class="fas fa-fw fa-folder"></i>Reports</a>
 </li>
 {{--@if(Auth::user()->role === "admin")--}}
 
