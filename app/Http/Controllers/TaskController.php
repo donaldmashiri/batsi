@@ -32,7 +32,7 @@ class TaskController extends Controller
     {
         $request->validate([
             'customer_names' => ['required', 'max:255'],
-            'customer_phone' => ['required', 'max:255'],
+            'customer_phone' => ['required', 'digits:10', 'max:255'],
             'depot' => ['required', 'max:255'],
             'shipment_date' => ['required', 'max:255'],
             'shipment_status' => ['required', 'max:255'],

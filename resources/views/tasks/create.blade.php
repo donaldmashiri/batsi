@@ -108,7 +108,7 @@
 
                                             <div class="form-group">
                                                 <label for="customer_phone" class="col-form-label text-md-end">{{ __('Customer Phone') }}</label>
-                                                <input id="customer_phone" type="number" class="form-control @error('customer_phone') is-invalid @enderror" name="customer_phone" value="{{ old('customer_name') }}" required autocomplete="customer_phone" autofocus>
+                                                <input id="customer_phone" type="text" class="form-control @error('customer_phone') is-invalid @enderror" name="customer_phone" value="{{ old('customer_name') }}" required autocomplete="customer_phone" autofocus>
                                                 @error('customer_phone')
                                                 <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>

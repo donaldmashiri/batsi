@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
             $table->string('customer_names');
-            $table->integer('customer_phone');
+            $table->string('customer_phone');
             $table->integer('driver_id');
             $table->string('depot');
             $table->string('shipment_date');
