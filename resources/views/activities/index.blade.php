@@ -26,44 +26,46 @@
                     <!-- Card Body -->
                     <div class="card-body">
                         @include('partials.errors')
-                        @if($activities->count() > 0)
+                        @if($tasks->count() > 0)
                             <table class="table table-bordered table-sm">
                                 <thead class="bg-light">
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Shipment Date</th>
-                                    <th scope="col">Status</th>
+                                    <th scope="col">Customer</th>
+                                    <th scope="col">Depot</th>
+                                    <th scope="col">Shipping Date</th>
+                                    <th scope="col">Shipping Status</th>
                                     <th scope="col">Origin Address</th>
                                     <th scope="col">Destination Address</th>
-                                    <th scope="col">Driver</th>
-                                    <th scope="col">Customer Name</th>
-                                    <th scope="col">Phone Number</th>
                                     <th scope="col">Date Added</th>
-                                    <th scope="col"></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($activities as $activity)
+                                @foreach($tasks as $task)
                                     <tr>
-                                        <th>{{ $activity->id }}</th>
-                                        <th>{{ $activity->shipment_date }}</th>
-                                        <th>{{ $activity->shipment_status }}</th>
-                                        <th>{{ $activity->origin_address }}</th>
-                                        <th>{{ $activity->destination_address }}</th>
-                                        <th>----</th>
-                                        <th>{{ $activity->customer_name }}</th>
-                                        <th>{{ $activity->customer_phone }}</th>
-                                        <th>{{ $activity->created_at }}</th>
+                                        <th>{{ $task->id}}</th>
                                         <th>
-                                            <a href="" class="btn btn-danger btn-sm">Generate driver</a>
-                                            <a href="{{ route('activities.show', $activity->id) }}" class="btn btn-info btn-sm">View</a>
+                                            <ul class="list-group">
+                                                <li class="list-group-item">{{ $task->customer_names}}</li>
+                                                <li class="list-group-item">{{ $task->customer_phone}}</li>
+                                            </ul>
                                         </th>
+                                        <th>{{ $task->depot}}</th>
+                                        <th>{{ $task->shipment_date}}</th>
+                                        <th>{{ $task->shipment_status}}</th>
+                                        <th>{{ $task->origin_address}}</th>
+                                        <th>{{ $task->destination_address}}</th>
+                                        <th>{{ $task->created_at}}</th>
+                                        <th>
+                                            <a href="{{ route('activities.show', $task->id)}}" class="btn btn-primary btn-sm">Start Task</a>
+                                        </th>
+
                                     </tr>
                                 @endforeach
                                 </tbody>
                             </table>
                         @else
-                            <h3 class='text-center alert alert-danger'>No Activity Available</h3>
+                            <h3 class='text-center alert alert-danger'>Not Assigned Yet</h3>
                         @endif
                     </div>
                 </div>

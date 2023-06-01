@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Activity;
+use App\Models\Task;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -30,4 +33,13 @@ class HomeController extends Controller
     {
         return view('profile');
     }
+
+    public function reports()
+    {
+        $usersTotal = User::count();
+        $tasksTotal = Task::count();
+        $activitiesTotal = Activity::count();
+        return view('reports', compact('usersTotal', 'activitiesTotal', 'tasksTotal'));
+    }
+
 }

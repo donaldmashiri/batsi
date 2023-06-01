@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Imports\ActivityImport;
 use App\Models\Activity;
+use App\Models\Task;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Excel;
 use Illuminate\Http\Request;
 
@@ -14,7 +17,14 @@ class ActivityController extends Controller
      */
     public function index()
     {
-        return view('activities.index')->with('activities', Activity::all());
+        $loggedInUserId = auth()->id();
+        $user = User::find($loggedInUserId);
+
+        $tasks = Task::where('driver_id', $loggedInUserId)->get();
+
+        return view('activities.index')
+            ->with('drivers', $user)
+            ->with('tasks', $tasks);
     }
 
     public function import(Request $request)
@@ -39,7 +49,29 @@ class ActivityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user_id = Auth::user()->id;
+        $task_id = $request->input('task_id');
+        $mass = $request->input('mass');
+        $time = $request->input('time');
+
+        $distance = rand(1, 100);
+        $km = rand(50, 200);
+        $cost = rand(100, 1000);
+        $status = ['Pending', 'In Progress', 'Completed'][rand(0, 2)];
+
+        // Create a new CameraDetection record
+        Activity::create([
+            'task_id' => $task_id,
+            'mass' => $mass,
+            'time' => $time,
+            'distance' => $distance,
+            'km' => $km,
+            'cost' => $cost,
+            'status' => $status,
+
+        ]);
+
+        return redirect()->back()->with('success', 'successfully saved');
     }
 
     /**
@@ -47,8 +79,10 @@ class ActivityController extends Controller
      */
     public function show($activity)
     {
-        $activity = \DB::table('activities')->where('id', $activity)->first();
-        return view('activities.show', compact('activity'));
+        $task = Task::find($activity);
+        $activity = Activity::where('task_id', $task->id)->first();
+
+        return view('activities.show', compact('task', 'activity'));
     }
 
     /**
