@@ -18,9 +18,9 @@
                     <div
                         class="card-header bg-gradient-secondary py-3 d-flex flex-row align-items-center justify-content-between">
                         <h6 class="m-0 font-weight-bold text-white">Activities</h6>
-                        <div class="justify-content-end">
-                            <a href="{{ route('activities.create') }}" class="btn btn-success btn-sm justify-content-end" > Create Activity</a>
-                        </div>
+{{--                        <div class="justify-content-end">--}}
+{{--                            <a href="{{ route('activities.create') }}" class="btn btn-success btn-sm justify-content-end" > Create Activity</a>--}}
+{{--                        </div>--}}
                     </div>
 
                     <!-- Card Body -->

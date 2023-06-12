@@ -34,7 +34,7 @@
                                           <div class="form-group">
                                               <label for="shipment_date" class="col-form-label text-md-end">{{ __('Shipping Date') }}</label>
 
-                                              <input id="shipment_date" type="text" class="form-control @error('shipment_date') is-invalid @enderror" name="shipment_date" value="{{ old('shipment_date') }}" required autocomplete="shipment_date" autofocus>
+                                              <input id="shipment_date" type="date" class="form-control @error('shipment_date') is-invalid @enderror" name="shipment_date" value="{{ old('shipment_date') }}" required autocomplete="shipment_date" autofocus>
                                               @error('shipment_date')
                                               <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
@@ -82,6 +82,23 @@
                                     <div class="card">
                                         <div class="card-header">Depot</div>
                                         <div class="card-body">
+
+                                            <div class="form-group">
+                                                <label for="driver_id" class="col-form-label text-md-end">{{ __('Select Driver') }}</label>
+                                                <select name="driver_id" id="driver_id" class="form-control @error('driver_id') is-invalid @enderror"  value="{{ old('driver_id') }}">
+                                                    @foreach($drivers as $driver)
+                                                        <option value="">Select Driver</option>
+                                                        <option value=" {{ $driver->id }}"> {{ $driver->name }}</option>
+                                                    @endforeach
+
+                                                </select>
+                                                @error('driver_id')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
+                                            </div>
+
                                             <div class="form-group">
                                                 <label for="depot" class="col-form-label text-md-end">{{ __('Select Depot') }}</label>
                                                 <select name="depot" id="depot" class="form-control @error('depot') is-invalid @enderror"  value="{{ old('depot') }}">
@@ -129,5 +146,13 @@
             </div>
         </div>
     </div>
+
+
+
+   <script>
+       flatpickr('#shipment_date', {
+           enableTime:true
+       })
+   </script>
 
 @endsection

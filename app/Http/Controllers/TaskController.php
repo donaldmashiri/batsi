@@ -38,14 +38,15 @@ class TaskController extends Controller
             'shipment_status' => ['required', 'max:255'],
             'origin_address' => ['required', 'max:255'],
             'destination_address' => ['required', 'max:255'],
+            'driver_id' => ['required', 'max:255'],
         ]);
 
-        $randomDriverId = User::inRandomOrder()->pluck('id')->first();
+//        $randomDriverId = User::inRandomOrder()->pluck('id')->first();
 
         Task::create([
             "customer_names" => request('customer_names'),
             "customer_phone" => request('customer_phone'),
-            "driver_id" => $randomDriverId,
+            "driver_id" => request('driver_id'),
             "depot" => request('depot'),
             "shipment_date" => request('shipment_date'),
             "shipment_status" => request('shipment_status'),

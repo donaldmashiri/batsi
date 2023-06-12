@@ -27,7 +27,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="card">
-                                    <div class="card header">Task </div>
+                                    <div class="card header m-1 font-weight-bolder text-info">Task Started </div>
                                     <div class="card-body">
                                         <table class="table table-bordered table-sm">
                                             <thead class="bg-light">
@@ -74,39 +74,6 @@
                                 <div class="card">
                                     <div class="card-header">Driver Progress</div>
                                     <div class="card-body">
-{{--                                        @if($activity->count() > 0)--}}
-
-                                            <table class="table table-bordered table-sm">
-                                                <thead class="">
-                                                <tr>
-                                                    <th scope="col">ref#</th>
-                                                    <th>ACT00{{ $activity->id}}</th>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="col">Mass (KG)</th>
-                                                    <th>{{ $activity->mass}}</th>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="col">Time</th>
-                                                    <th>{{ $activity->time}}</th>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="col">Distance KM</th>
-                                                    <th>{{ $activity->km}}KM</th>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="col">Cost</th>
-                                                    <th>{{ $activity->cost}}KM</th>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="col">Status</th>
-                                                    <th>{{ $activity->status}}</th>
-                                                </tr>
-                                                </thead>
-                                            </table>
-
-{{--                                        @else--}}
-
 
                                         <form action="{{ route('activities.store') }}" method="post">
                                             @csrf
@@ -144,8 +111,6 @@
                                             <a href="" class="btn btn-success">Delivered</a>
                                             <a href="" class="btn btn-danger">Not Delivered</a>
                                         </div>
-
-
 
                                     </div>
                                 </div>
