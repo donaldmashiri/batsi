@@ -61,7 +61,6 @@
                                                 <th scope="col">Destination Address</th>
                                                 <th>{{ $task->destination_address}}</th>
                                             </tr>
-
                                             </thead>
                                         </table>
                                     </div>

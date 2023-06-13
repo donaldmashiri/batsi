@@ -106,17 +106,6 @@ class ActivityController extends Controller
         $activity->status = $request->input('status');
         $activity->save();
 
-//        $toEmail = 'donaldtondemashiri@gmail.com';
-//        $subject = 'This is a fake email';
-//        $message = 'Hello, this is a fake email message!';
-//
-//        Mail::raw($message, function ($email) use ($toEmail, $subject) {
-//            $email->to($toEmail)
-//                ->subject($subject);
-//        });
-//
-//        return "Fake email sent successfully!";
-
         return redirect()->back()->with('success', 'Status updated successfully');
     }
 
