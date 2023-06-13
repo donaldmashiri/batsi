@@ -34,6 +34,16 @@ class HomeController extends Controller
         return view('profile');
     }
 
+    public function notify()
+    {
+        $tasks = Task::all();
+        $activities = Activity::where('status', '!=', 'Delivered')->get();
+
+        return view('notify', compact('tasks', 'activities'));
+    }
+
+
+
     public function reports()
     {
         $usersTotal = User::count();
