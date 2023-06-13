@@ -34,6 +34,11 @@ class HomeController extends Controller
         return view('profile');
     }
 
+    public function deliveryNote()
+    {
+        return view('deliveryNote')->with('tasks', Task::all());
+    }
+
     public function notify()
     {
         $tasks = Task::all();

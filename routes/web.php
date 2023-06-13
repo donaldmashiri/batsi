@@ -20,6 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/deliveryNote', [App\Http\Controllers\HomeController::class, 'deliveryNote'])->name('home');
 Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('home');
 Route::get('/notify', [App\Http\Controllers\HomeController::class, 'notify'])->name('home');
 Route::resource('tasks', \App\Http\Controllers\TaskController::class,);
