@@ -58,11 +58,12 @@
                                         <th>{{ $task->created_at}}</th>
                                         <th>
                                             @foreach ($task->activities as $activity)
-                                                @if ($activity->status !== 'Delivered')
                                                 <a href="{{ route('activities.show', $task->id)}}" class="btn btn-primary btn-sm">Start Task</a>
-                                                @else
-                                                    <p class="text-info font-weight-bolder">{{ $activity->status }}</p>
-                                                @endif
+{{--                                                @if ($activity->status !== 'Delivered')--}}
+{{--                                                    <a href="{{ route('activities.show', $task->id)}}" class="btn btn-primary btn-sm">Start Task</a>--}}
+{{--                                                @else--}}
+{{--                                                    <p class="text-info font-weight-bolder">{{ $activity->status }}</p>--}}
+{{--                                                @endif--}}
 
                                             @endforeach
                                         </th>
