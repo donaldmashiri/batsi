@@ -38,7 +38,6 @@ class TaskController extends Controller
             'customer_phone' => ['required', 'digits:10', 'max:255'],
             'depot' => ['required', 'max:255'],
             'shipment_date' => ['required', 'max:255'],
-            'shipment_status' => ['required', 'max:255'],
             'origin_address' => ['required', 'max:255'],
             'destination_address' => ['required', 'max:255'],
             'driver_id' => ['required', 'max:255'],
@@ -52,7 +51,6 @@ class TaskController extends Controller
             "user_id" => request('driver_id'),
             "depot" => request('depot'),
             "shipment_date" => request('shipment_date'),
-            "shipment_status" => request('shipment_status'),
             "origin_address" => request('origin_address'),
             "destination_address" => request('destination_address'),
         ]);

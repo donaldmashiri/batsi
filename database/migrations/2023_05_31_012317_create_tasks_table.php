@@ -18,7 +18,6 @@ return new class extends Migration
             $table->integer('user_id');
             $table->string('depot');
             $table->string('shipment_date');
-            $table->string('shipment_status');
             $table->string('origin_address');
             $table->string('destination_address');
             $table->timestamps();

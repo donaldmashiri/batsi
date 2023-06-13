@@ -35,7 +35,6 @@
                                     <th scope="col">Driver</th>
                                     <th scope="col">Depot</th>
                                     <th scope="col">Shipping Date</th>
-                                    <th scope="col">Shipping Status</th>
                                     <th scope="col">Origin Address</th>
                                     <th scope="col">Destination Address</th>
                                     <th scope="col">Date Added</th>
@@ -54,7 +53,6 @@
                                         <th>{{ $task->user->name }}</th>
                                         <th>{{ $task->depot}}</th>
                                         <th>{{ $task->shipment_date}}</th>
-                                        <th>{{ $task->shipment_status}}</th>
                                         <th>{{ $task->origin_address}}</th>
                                         <th>{{ $task->destination_address}}</th>
                                         <th>{{ $task->created_at}}</th>

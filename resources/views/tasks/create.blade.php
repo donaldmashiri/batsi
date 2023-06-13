@@ -43,17 +43,6 @@
                                           </div>
 
                                           <div class="form-group">
-                                              <label for="shipment_status" class="col-form-label text-md-end">{{ __('Shipment status') }}</label>
-
-                                              <input id="shipment_status" type="text" class="form-control @error('shipment_status') is-invalid @enderror" name="shipment_status" value="{{ old('shipment_status') }}" required autocomplete="shipment_status" autofocus>
-                                              @error('shipment_status')
-                                              <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                              @enderror
-                                          </div>
-
-                                          <div class="form-group">
                                               <label for="origin_address" class="ol-form-label text-md-end">{{ __('Origin Address') }}</label>
 
                                               <textarea name="origin_address" id="origin_address" class="form-control @error('origin_address') is-invalid @enderror"  value="{{ old('origin_address') }}" required autocomplete="origin_address" autofocus cols="5" rows="3"></textarea>

@@ -108,22 +108,22 @@
                                 </div>
                             </div>
 
-                            <div class="col-xl-2 col-md-3 mb-4">
-                                <div class="card border-left-dark shadow h-100 py-2">
-                                    <div class="card-body">
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">
-                                                    Total Distance Covered</div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800">180KM</div>
-                                            </div>
-                                            <div class="col-auto">
-                                                <i class="fas fa-video fa-2x text-gray-300"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+{{--                            <div class="col-xl-2 col-md-3 mb-4">--}}
+{{--                                <div class="card border-left-dark shadow h-100 py-2">--}}
+{{--                                    <div class="card-body">--}}
+{{--                                        <div class="row no-gutters align-items-center">--}}
+{{--                                            <div class="col mr-2">--}}
+{{--                                                <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">--}}
+{{--                                                    Total Distance Covered</div>--}}
+{{--                                                <div class="h5 mb-0 font-weight-bold text-gray-800">180KM</div>--}}
+{{--                                            </div>--}}
+{{--                                            <div class="col-auto">--}}
+{{--                                                <i class="fas fa-video fa-2x text-gray-300"></i>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
                         </div>
 
                         <div class="card">
@@ -133,12 +133,12 @@
                                    @foreach ($tasks as $task)
                                    <div class="col-md-4">
                                        <div class="card">
-                                           <div class="container">
-                                               <h6>Filter Options</h6>
-                                               <input type="text" id="originFilter" placeholder="Filter by Origin Address">
-                                               <input type="text" id="destinationFilter" placeholder="Filter by Destination Address">
+{{--                                           <div class="container">--}}
+{{--                                               <h6>Filter Options</h6>--}}
+{{--                                               <input type="text" id="originFilter" placeholder="Filter by Origin Address">--}}
+{{--                                               <input type="text" id="destinationFilter" placeholder="Filter by Destination Address">--}}
 
-                                           </div>
+{{--                                           </div>--}}
 
                                            <div id="taskFilter">
                                            <div class="card-body">
@@ -151,14 +151,14 @@
                                                        @foreach ($task->activities as $activity)
                                                            <li class="list-group-item">
                                                                <div class="row">
-                                                                   <div class="col-sm-4">
-                                                                       <strong>Mass:</strong> {{ $activity->mass }}
+                                                                   <div class="col-sm-6">
+                                                                       <strong>Mass (KG):</strong> {{ $activity->mass }}
                                                                    </div>
-                                                                   <div class="col-sm-4">
+                                                                   <div class="col-sm-6">
                                                                        <strong>Time:</strong> {{ $activity->time }}
                                                                    </div>
-                                                                   <div class="col-sm-4">
-                                                                       <strong>Distance:</strong> {{ $activity->distance }}
+                                                                   <div class="col-sm-6">
+                                                                       <strong>Distance (KM):</strong> {{ $activity->distance }}
                                                                    </div>
                                                                </div>
                                                                <div class="row">

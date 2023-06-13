@@ -104,6 +104,7 @@ class ActivityController extends Controller
     {
         $activity = Activity::findOrFail($id);
         $activity->status = $request->input('status');
+        $activity->reason = $request->input('reason');
         $activity->save();
 
         return redirect()->back()->with('success', 'Status updated successfully');

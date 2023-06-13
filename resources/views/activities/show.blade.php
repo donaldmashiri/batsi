@@ -86,9 +86,30 @@
                                                     @method('PUT')
                                                     <button onclick="showAlert()"  class="btn btn-success" name="status" value="Delivered" type="submit">Delivered</button>
                                                     @if ($activity->status !== 'Delivered')
-                                                        <button class="btn btn-danger" name="status" value="Not Delivered" type="submit">Not Delivered</button>
+                                                        <button onclick="showDAlert()" class="btn btn-danger" name="status" value="Not Delivered" type="submit">Not Delivered</button>
                                                     @endif
+
+                                                    @if($activity->status === 'Not Delivered')
+
+                                                        @if ($activity->reason !== null)
+                                                            <ul class="list-group mt-3">
+                                                                <li class="list-group-item font-weight-bolder">Reason: {{ $activity->reason }}</li>
+                                                            </ul>
+                                                        @endif
+
+                                                            @if ($activity->reason === null)
+                                                                <div class="form-group">
+                                                                    <input type="text" name="reason" class="form-control" placeholder="Reason: ">
+
+                                                                    <button type="submit" name="status" name="status" value="Not Delivered"  class="btn btn-primary">Submit</button>
+                                                                </div>
+                                                            @endif
+                                                    @endif
+
                                                 </form>
+
+
+
                                             </div>
 
 
@@ -97,6 +118,11 @@
                                                 function showAlert() {
                                                     Swal.fire('Success', 'Package Successfully Delivered', 'success');
                                                 }
+
+                                                function showDAlert() {
+                                                    Swal.fire('Not Delivered', 'Not Delivered', 'error');
+                                                }
+
                                             </script>
 
 

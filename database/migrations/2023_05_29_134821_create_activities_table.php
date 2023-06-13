@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('distance');
             $table->string('km');
             $table->string('cost');
+            $table->string('reason')->nullable();
             $table->string('status');
 
             $table->timestamps();
