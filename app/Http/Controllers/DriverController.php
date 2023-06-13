@@ -12,7 +12,7 @@ class DriverController extends Controller
      */
     public function index()
     {
-        return view('tasks.index')->with('tasks', Driver::all());
+//        return view('tasks.index')->with('tasks', Driver::all());
     }
 
     /**

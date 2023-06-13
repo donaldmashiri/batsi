@@ -51,7 +51,7 @@
                                                 <li class="list-group-item">{{ $task->customer_phone}}</li>
                                             </ul>
                                         </th>
-                                        <th>name coming</th>
+                                        <th>{{ $task->user->name }}</th>
                                         <th>{{ $task->depot}}</th>
                                         <th>{{ $task->shipment_date}}</th>
                                         <th>{{ $task->shipment_status}}</th>

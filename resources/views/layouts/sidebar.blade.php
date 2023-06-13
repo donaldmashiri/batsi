@@ -10,6 +10,9 @@
     <a class="nav-link collapsed " href="{{ route('tasks.index') }}"><i class="fas fa-fw fa-tasks"></i>Tasks</a>
 </li>
 <li class="nav-item ">
+    <a class="nav-link collapsed " href="/notify"><i class="fas fa-fw fa-bell"></i>Notifications</a>
+</li>
+<li class="nav-item ">
     <a class="nav-link collapsed " href="/reports"><i class="fas fa-fw fa-folder"></i>Reports</a>
 </li>
 

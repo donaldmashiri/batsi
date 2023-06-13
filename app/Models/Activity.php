@@ -11,6 +11,7 @@ class Activity extends Model
 
     protected $fillable = [
         'task_id',
+        'user_id',
         'mass',
         'time',
         'distance',
@@ -18,5 +19,16 @@ class Activity extends Model
         'cost',
         'status',
     ];
+
+    public function task()
+    {
+        return $this->belongsTo(Task::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 
 }

@@ -86,9 +86,9 @@
                                             <div class="form-group">
                                                 <label for="driver_id" class="col-form-label text-md-end">{{ __('Select Driver') }}</label>
                                                 <select name="driver_id" id="driver_id" class="form-control @error('driver_id') is-invalid @enderror"  value="{{ old('driver_id') }}">
-                                                    @foreach($drivers as $driver)
+                                                    @foreach($users as $user)
                                                         <option value="">Select Driver</option>
-                                                        <option value=" {{ $driver->id }}"> {{ $driver->name }}</option>
+                                                        <option value=" {{ $user->id }}"> {{ $user->name }}</option>
                                                     @endforeach
 
                                                 </select>

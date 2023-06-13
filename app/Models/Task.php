@@ -12,12 +12,23 @@ class Task extends Model
     protected $fillable = [
         'customer_names',
         'customer_phone',
-        'driver_id',
+        'user_id',
         'depot',
         'shipment_date',
         'shipment_status',
         'origin_address',
         'destination_address',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function activities()
+    {
+        return $this->hasMany(Activity::class);
+    }
+
 
 }

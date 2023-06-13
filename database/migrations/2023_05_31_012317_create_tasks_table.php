@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('customer_names');
             $table->string('customer_phone');
-            $table->integer('driver_id');
+            $table->integer('user_id');
             $table->string('depot');
             $table->string('shipment_date');
             $table->string('shipment_status');

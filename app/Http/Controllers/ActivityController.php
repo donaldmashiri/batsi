@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Excel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ActivityController extends Controller
 {
@@ -20,7 +21,7 @@ class ActivityController extends Controller
         $loggedInUserId = auth()->id();
         $user = User::find($loggedInUserId);
 
-        $tasks = Task::where('driver_id', $loggedInUserId)->get();
+        $tasks = Task::where('user_id', $loggedInUserId)->get();
 
         return view('activities.index')
             ->with('drivers', $user)
@@ -61,6 +62,7 @@ class ActivityController extends Controller
 
         // Create a new CameraDetection record
         Activity::create([
+            'user_id' => $user_id,
             'task_id' => $task_id,
             'mass' => $mass,
             'time' => $time,
@@ -71,7 +73,7 @@ class ActivityController extends Controller
 
         ]);
 
-        return redirect()->back()->with('success', 'successfully saved');
+        return redirect()->back()->with('success', 'Activity successfully started');
     }
 
     /**
@@ -81,9 +83,11 @@ class ActivityController extends Controller
     {
         $task = Task::find($activity);
         $activity = Activity::where('task_id', $task->id)->first();
+        $activityCount = Activity::where('task_id', $task->id)->count();
 
-        return view('activities.show', compact('task', 'activity'));
+        return view('activities.show', compact('task', 'activity', 'activityCount'));
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -98,7 +102,22 @@ class ActivityController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $activity = Activity::findOrFail($id);
+        $activity->status = $request->input('status');
+        $activity->save();
+
+//        $toEmail = 'donaldtondemashiri@gmail.com';
+//        $subject = 'This is a fake email';
+//        $message = 'Hello, this is a fake email message!';
+//
+//        Mail::raw($message, function ($email) use ($toEmail, $subject) {
+//            $email->to($toEmail)
+//                ->subject($subject);
+//        });
+//
+//        return "Fake email sent successfully!";
+
+        return redirect()->back()->with('success', 'Status updated successfully');
     }
 
     /**

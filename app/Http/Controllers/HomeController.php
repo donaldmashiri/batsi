@@ -39,7 +39,16 @@ class HomeController extends Controller
         $usersTotal = User::count();
         $tasksTotal = Task::count();
         $activitiesTotal = Activity::count();
-        return view('reports', compact('usersTotal', 'activitiesTotal', 'tasksTotal'));
+
+        $tasks = Task::all();
+        $activities = Activity::all();
+
+        $reports = Task::join('activities', 'tasks.id', '=', 'activities.task_id')
+            ->select('tasks.*')
+            ->get();
+
+        return view('reports', compact('usersTotal', 'activitiesTotal','tasks','activities', 'tasksTotal', 'reports'));
     }
+
 
 }

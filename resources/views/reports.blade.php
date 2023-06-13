@@ -126,23 +126,48 @@
                             </div>
                         </div>
 
-                        <div class="col-xl-2 col-md-3 mb-4">
-                            <div class="card border-left-dark shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">
-                                                Total Cost for the Past Month</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$5000</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-video fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
+                        <div class="card">
+                            <div class="card-body">
+
+                               <div class="row">
+                                   @foreach ($tasks as $task)
+                                   <div class="col-md-4">
+                                       <div class="card">
+                                           <div class="card-body">
+                                                   <h3 class="card-title">Task: {{ $task->customer_names }}</h3>
+                                                   <p class="card-text">Origin: {{ $task->origin_address }}</p>
+                                                   <p class="card-text">Destination: {{ $task->destination_address }}</p>
+
+                                                   <h4 class="card-subtitle mb-2">Activities:</h4>
+                                                   <ul class="list-group">
+                                                       @foreach ($task->activities as $activity)
+                                                           <li class="list-group-item">
+                                                               <div class="row">
+                                                                   <div class="col-sm-4">
+                                                                       <strong>Mass:</strong> {{ $activity->mass }}
+                                                                   </div>
+                                                                   <div class="col-sm-4">
+                                                                       <strong>Time:</strong> {{ $activity->time }}
+                                                                   </div>
+                                                                   <div class="col-sm-4">
+                                                                       <strong>Distance:</strong> {{ $activity->distance }}
+                                                                   </div>
+                                                               </div>
+                                                               <div class="row">
+                                                                   <div class="col-sm-12">
+                                                                       <strong>Status:</strong> {{ $activity->status }}
+                                                                   </div>
+                                                               </div>
+                                                           </li>
+                                                       @endforeach
+                                                   </ul>
+                                           </div>
+                                       </div>
+                                   </div>
+                                   @endforeach
+                               </div>
                             </div>
                         </div>
-                    </div>
 
 
                 </div>

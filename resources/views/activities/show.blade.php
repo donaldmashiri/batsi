@@ -6,9 +6,6 @@
     <!-- Begin Page Content -->
     <div class="container-fluid">
 
-
-        <!-- Content Row -->
-
         <div class="row">
 
             <!-- Area Chart -->
@@ -74,43 +71,73 @@
                                 <div class="card">
                                     <div class="card-header">Driver Progress</div>
                                     <div class="card-body">
-
-                                        <form action="{{ route('activities.store') }}" method="post">
-                                            @csrf
-
-                                            <input type="hidden" value="{{ $task->id }}" name="task_id">
-                                            <div class="form-group">
-                                                <label for="mass" class="col-form-label text-md-end">{{ __('Mass (KG)') }}</label>
-
-                                                <input id="mass" type="text" class="form-control @error('mass') is-invalid @enderror" name="mass" value="{{ old('mass') }}" required autocomplete="mass" autofocus>
-                                                @error('mass')
-                                                <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                @enderror
+                                        @if($activityCount >  0)
+                                            <ul class="list-group">
+                                                <li class="list-group-item">Activity#: 00AT{{ $activity->id }}</li>
+                                                <li class="list-group-item">Mass: {{ $activity->mass }}</li>
+                                                <li class="list-group-item">Time: {{ $activity->time }}</li>
+                                                <li class="list-group-item">Distance: {{ $activity->km }}</li>
+                                                <li class="list-group-item">Cost: {{ $activity->cost }}</li>
+                                                <li class="list-group-item text-info">Status: {{ $activity->status }}</li>
+                                            </ul>
+                                            <div class="card-body">
+                                                <h6>Change Progress Status</h6>
+                                                <form action="{{ route('activities.update', $activity->id) }}" method="POST" id="statusForm">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <button onclick="showAlert()"  class="btn btn-success" name="status" value="Delivered" type="submit">Delivered</button>
+                                                    @if ($activity->status !== 'Delivered')
+                                                        <button class="btn btn-danger" name="status" value="Not Delivered" type="submit">Not Delivered</button>
+                                                    @endif
+                                                </form>
                                             </div>
 
-                                            <div class="form-group">
-                                                <label for="time" class="col-form-label text-md-end">{{ __('Time of Departure') }}</label>
 
-                                                <input id="time" type="text" class="form-control @error('time') is-invalid @enderror" name="time" value="{{ old('time') }}" required autocomplete="time" autofocus>
-                                                @error('time')
-                                                <span class="invalid-feedback" role="alert">
+                                            <script>
+                                                // Display a basic SweetAlert alert
+                                                function showAlert() {
+                                                    Swal.fire('Success', 'Package Successfully Delivered', 'success');
+                                                }
+                                            </script>
+
+
+
+                                        @else
+                                            <form action="{{ route('activities.store') }}" method="post">
+                                                @csrf
+
+                                                <input type="hidden" value="{{ $task->id }}" name="task_id">
+                                                <div class="form-group">
+                                                    <label for="mass" class="col-form-label text-md-end">{{ __('Mass (KG)') }}</label>
+
+                                                    <input id="mass" type="text" class="form-control @error('mass') is-invalid @enderror" name="mass" value="{{ old('mass') }}" required autocomplete="mass" autofocus>
+                                                    @error('mass')
+                                                    <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
                                                         </span>
-                                                @enderror
-                                            </div>
+                                                    @enderror
+                                                </div>
 
-                                            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                                                <div class="form-group">
+                                                    <label for="time" class="col-form-label text-md-end">{{ __('Time of Departure') }}</label>
 
-                                        </form>
-{{--                                        @endif--}}
+                                                    <input id="time" type="text" class="form-control @error('time') is-invalid @enderror" name="time" value="{{ old('time') }}" required autocomplete="time" autofocus>
+                                                    @error('time')
+                                                    <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
 
-                                        <div class="card-body">
-                                            <h6>Change Progress Status</h6>
-                                            <a href="" class="btn btn-success">Delivered</a>
-                                            <a href="" class="btn btn-danger">Not Delivered</a>
-                                        </div>
+                                                <button type="submit" class="btn btn-primary btn-block">Submit</button>
+
+                                            </form>
+                                        @endif
+
+
+
+
+
 
                                     </div>
                                 </div>

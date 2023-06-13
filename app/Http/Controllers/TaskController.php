@@ -13,7 +13,10 @@ class TaskController extends Controller
      */
     public function index()
     {
-        return view('tasks.index')->with('tasks', Task::all());
+        $tasks = Task::with('user')->get();
+
+        return view('tasks.index', compact('tasks'));
+//        return view('tasks.index')->with('tasks', Task::all());
     }
 
     /**
@@ -21,7 +24,7 @@ class TaskController extends Controller
      */
     public function create()
     {
-        return view('tasks.create')->with('drivers', User::whereNull('role')->orWhere('role', '')->get());
+        return view('tasks.create')->with('users', User::whereNull('role')->orWhere('role', '')->get());
     }
 
 
@@ -46,7 +49,7 @@ class TaskController extends Controller
         Task::create([
             "customer_names" => request('customer_names'),
             "customer_phone" => request('customer_phone'),
-            "driver_id" => request('driver_id'),
+            "user_id" => request('driver_id'),
             "depot" => request('depot'),
             "shipment_date" => request('shipment_date'),
             "shipment_status" => request('shipment_status'),
