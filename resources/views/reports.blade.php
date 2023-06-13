@@ -133,6 +133,14 @@
                                    @foreach ($tasks as $task)
                                    <div class="col-md-4">
                                        <div class="card">
+                                           <div class="container">
+                                               <h6>Filter Options</h6>
+                                               <input type="text" id="originFilter" placeholder="Filter by Origin Address">
+                                               <input type="text" id="destinationFilter" placeholder="Filter by Destination Address">
+
+                                           </div>
+
+                                           <div id="taskFilter">
                                            <div class="card-body">
                                                    <h3 class="card-title">Task: {{ $task->customer_names }}</h3>
                                                    <p class="card-text">Origin: {{ $task->origin_address }}</p>
@@ -162,6 +170,40 @@
                                                        @endforeach
                                                    </ul>
                                            </div>
+                                           </div>
+
+                                           <script>
+                                               function filterTable() {
+                                                   var userId = document.getElementById('filterUserId').value.toLowerCase();
+                                                   var plateNumber = document.getElementById('filterPlateNumber').value.toLowerCase();
+                                                   var status = document.getElementById('filterStatus').value.toLowerCase();
+                                                   var table = document.getElementById('videoDetectionTable');
+                                                   var rows = table.getElementsByTagName('tr');
+
+                                                   for (var i = 0; i < rows.length; i++) {
+                                                       var userIdCell = rows[i].getElementsByTagName('td')[0];
+                                                       var plateNumberCell = rows[i].getElementsByTagName('td')[1];
+                                                       var statusCell = rows[i].getElementsByTagName('td')[3];
+
+                                                       if (userIdCell && plateNumberCell && statusCell) {
+                                                           var userIdValue = userIdCell.textContent || userIdCell.innerText;
+                                                           var plateNumberValue = plateNumberCell.textContent || plateNumberCell.innerText;
+                                                           var statusValue = statusCell.textContent || statusCell.innerText;
+
+                                                           if ((userIdValue.toLowerCase().indexOf(userId) > -1 || userId === '') &&
+                                                               (plateNumberValue.toLowerCase().indexOf(plateNumber) > -1 || plateNumber === '') &&
+                                                               (statusValue.toLowerCase() === status || status === '')) {
+                                                               rows[i].style.display = '';
+                                                           } else {
+                                                               rows[i].style.display = 'none';
+                                                           }
+                                                       }
+                                                   }
+                                               }
+                                           </script>
+
+
+
                                        </div>
                                    </div>
                                    @endforeach
