@@ -11,7 +11,7 @@
 
             <!-- First Notification Column -->
 {{--            @if($activities && $activities->count() > 0)--}}
-                @foreach ($activities as $task)
+
                     <div class="col-xl-6 col-lg-6">
                         <div class="card shadow mb-4">
                             <!-- Card Header - Dropdown -->
@@ -20,6 +20,7 @@
                             </div>
 
                             <!-- Card Body -->
+                            @foreach ($tasks as $task)
                             <div class="card-body bg-light">
                                 <div class="card-body">
                                     <h3 class="card-title">Task: {{ $task->customer_names }}</h3>
@@ -28,7 +29,7 @@
 
                                     <h4 class="card-subtitle mb-2">Activities:</h4>
                                     <ul class="list-group">
-                                        @foreach ($task->activities as $activity)
+                                        @foreach ($activities as $activity)
                                             <li class="list-group-item">
                                                 <div class="row">
                                                     <div class="col-sm-4">
@@ -45,15 +46,19 @@
                                                     <div class="col-sm-12">
                                                         <strong>Status:</strong> {{ $activity->status }}
                                                     </div>
+                                                    <div class="col-sm-12">
+                                                        <strong>Reasons:</strong> {{ $activity->reason }}
+                                                    </div>
                                                 </div>
                                             </li>
                                         @endforeach
                                     </ul>
                                 </div>
                             </div>
+                            @endforeach
                         </div>
                     </div>
-                @endforeach
+
 {{--            @else--}}
 {{--                <div class="col-12">--}}
 {{--                    <div class="alert alert-info" role="alert">--}}

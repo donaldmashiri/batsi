@@ -22,7 +22,7 @@
 
                     <!-- Card Body -->
                     <div class="card-body">
-                       <h4 class="font-weight-bolder"> Account Balance: $5000 </h4>
+{{--                       <h4 class="font-weight-bolder"> Account Balance: $5000 </h4>--}}
                         @include('partials.errors')
                         <form action="{{ route('tasks.store') }}" method="post">
                             @csrf

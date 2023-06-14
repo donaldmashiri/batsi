@@ -91,22 +91,22 @@
                             </div>
 
                             <!-- Pending Requests Card Example -->
-                            <div class="col-xl-2 col-md-3 mb-4">
-                                <div class="card border-left-danger shadow h-100 py-2">
-                                    <div class="card-body">
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
-                                                    Completed Taks</div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
-                                            </div>
-                                            <div class="col-auto">
-                                                <i class="fas fa-camera fa-2x text-gray-300"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+{{--                            <div class="col-xl-2 col-md-3 mb-4">--}}
+{{--                                <div class="card border-left-danger shadow h-100 py-2">--}}
+{{--                                    <div class="card-body">--}}
+{{--                                        <div class="row no-gutters align-items-center">--}}
+{{--                                            <div class="col mr-2">--}}
+{{--                                                <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">--}}
+{{--                                                    Completed Taks</div>--}}
+{{--                                                <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>--}}
+{{--                                            </div>--}}
+{{--                                            <div class="col-auto">--}}
+{{--                                                <i class="fas fa-camera fa-2x text-gray-300"></i>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
 
 {{--                            <div class="col-xl-2 col-md-3 mb-4">--}}
 {{--                                <div class="card border-left-dark shadow h-100 py-2">--}}
@@ -133,14 +133,42 @@
                                    @foreach ($tasks as $task)
                                    <div class="col-md-4">
                                        <div class="card">
-{{--                                           <div class="container">--}}
-{{--                                               <h6>Filter Options</h6>--}}
-{{--                                               <input type="text" id="originFilter" placeholder="Filter by Origin Address">--}}
-{{--                                               <input type="text" id="destinationFilter" placeholder="Filter by Destination Address">--}}
 
-{{--                                           </div>--}}
+                                               <div class="input-group mb-3">
+                                                   <input type="text" id="statusFilter" class="form-control" placeholder="Filter by Status">
+                                                   <input type="text" id="customerNameFilter" class="form-control" placeholder="Filter by Customer Name">
+                                                   <div class="input-group-append">
+                                                       <button class="btn btn-primary" onclick="applyFilters()">Apply Filters</button>
+                                                   </div>
+                                               </div>
+
+                                               <script>
+                                                   function applyFilters() {
+                                                       var statusFilterValue = document.getElementById('statusFilter').value.toLowerCase();
+                                                       var customerNameFilterValue = document.getElementById('customerNameFilter').value.toLowerCase();
+
+                                                       var tasks = document.getElementById('taskFilter').getElementsByClassName('card-body');
+
+                                                       for (var i = 0; i < tasks.length; i++) {
+                                                           var task = tasks[i];
+
+                                                           var taskStatus = task.querySelector('.card-subtitle').innerText.toLowerCase();
+                                                           var customerName = task.querySelector('.card-title').innerText.toLowerCase();
+
+                                                           if (
+                                                               taskStatus.includes(statusFilterValue) &&
+                                                               customerName.includes(customerNameFilterValue)
+                                                           ) {
+                                                               task.style.display = 'block';
+                                                           } else {
+                                                               task.style.display = 'none';
+                                                           }
+                                                       }
+                                                   }
+                                               </script>
 
                                            <div id="taskFilter">
+                                               <div class="card-header">{{ $task->user->name }}</div>
                                            <div class="card-body">
                                                    <h3 class="card-title">Task: {{ $task->customer_names }}</h3>
                                                    <p class="card-text">Origin: {{ $task->origin_address }}</p>
@@ -158,7 +186,7 @@
                                                                        <strong>Time:</strong> {{ $activity->time }}
                                                                    </div>
                                                                    <div class="col-sm-6">
-                                                                       <strong>Distance (KM):</strong> {{ $activity->distance }}
+                                                                       <strong>Distance (KM):</strong> {{ $activity->km }}
                                                                    </div>
                                                                </div>
                                                                <div class="row">
@@ -170,6 +198,7 @@
                                                        @endforeach
                                                    </ul>
                                            </div>
+                                               {{ $tasks->links() }}
                                            </div>
 
                                            <script>

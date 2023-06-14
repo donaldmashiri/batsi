@@ -63,8 +63,20 @@ class TaskController extends Controller
      */
     public function show(string $id)
     {
-        //
+//        $searchTerm = request('search');
+//
+//        $task = Task::findOrFail($id);
+//        $activities = Activity::where('task_id', $id)
+//            ->where(function ($query) use ($searchTerm) {
+//                $query->where('status', 'like', '%' . $searchTerm . '%')
+//                    ->orWhere('task', 'like', '%' . $searchTerm . '%')
+//                    ->orWhere('customer_name', 'like', '%' . $searchTerm . '%');
+//            })
+//            ->paginate(10);
+//
+//        return view('your-view', compact('task', 'activities'));
     }
+
 
     /**
      * Show the form for editing the specified resource.

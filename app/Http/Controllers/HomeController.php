@@ -42,11 +42,26 @@ class HomeController extends Controller
     public function notify()
     {
         $tasks = Task::all();
+//        $activities = Activity::all();
         $activities = Activity::where('status', '!=', 'Delivered')->get();
 
         return view('notify', compact('tasks', 'activities'));
     }
 
+//    public function search(Request $request)
+//    {
+//        $searchTerm = $request->input('search');
+//
+//        $activities = Task::where(function ($query) use ($searchTerm) {
+//            $query->where('customer_phone', 'like', '%' . $searchTerm . '%')
+//                ->orWhere('customer_names', 'like', '%' . $searchTerm . '%');
+//        })
+//            ->get();
+//
+//        $tasks = Task::all();
+//
+//        return view('reportsSearch', compact('activities', 'tasks'));
+//    }
 
 
     public function reports()
@@ -55,8 +70,11 @@ class HomeController extends Controller
         $tasksTotal = Task::count();
         $activitiesTotal = Activity::count();
 
-        $tasks = Task::all();
-        $activities = Activity::all();
+//        $tasks = Task::all();
+//        $activities = Activity::all();
+
+        $tasks = Task::paginate(1);
+        $activities = Activity::paginate(1);
 
         $reports = Task::join('activities', 'tasks.id', '=', 'activities.task_id')
             ->select('tasks.*')
