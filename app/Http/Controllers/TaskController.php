@@ -34,7 +34,7 @@ class TaskController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'customer_names' => ['required', 'max:255'],
+            'customer_names' => ['required', 'max:255', 'alpha'],
             'customer_phone' => ['required', 'digits:10', 'max:255'],
             'depot' => ['required', 'max:255'],
             'shipment_date' => ['required', 'max:255'],
