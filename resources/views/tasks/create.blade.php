@@ -104,7 +104,7 @@
 
                                             <div class="form-group">
                                                 <label for="customer_names" class="col-md-4 col-form-label text-md-end">{{ __('Customer Names') }}</label>
-                                                <input id="customer_names" type="text" class="form-control @error('customer_names') is-invalid @enderror" name="customer_names" value="{{ old('customer_names') }}" required autocomplete="customer_names" autofocus>
+                                                <input id="customer_names" type="text" class="form-control @error('customer_names') is-invalid @enderror" name="customer_names" pattern="[A-Za-z]+" value="{{ old('customer_names') }}" required autocomplete="customer_names"  onkeypress="return onlyAlphabets(event,this);">
                                                 @error('customer_names')
                                                 <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
@@ -112,9 +112,30 @@
                                                 @enderror
                                             </div>
 
+                                            <script>
+                                                function onlyAlphabets(e, t) {
+                                                    try {
+                                                        if (window.event) {
+                                                            var charCode = window.event.keyCode;
+                                                        }
+                                                        else if (e) {
+                                                            var charCode = e.which;
+                                                        }
+                                                        else { return true; }
+                                                        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123))
+                                                            return true;
+                                                        else
+                                                            return false;
+                                                    }
+                                                    catch (err) {
+                                                        alert(err.Description);
+                                                    }
+                                                }
+                                            </script>
+
                                             <div class="form-group">
                                                 <label for="customer_phone" class="col-form-label text-md-end">{{ __('Customer Phone') }}</label>
-                                                <input id="customer_phone" type="text" class="form-control @error('customer_phone') is-invalid @enderror" name="customer_phone" value="{{ old('customer_name') }}" required autocomplete="customer_phone" autofocus>
+                                                <input onkeypress='return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))' id="customer_phone" type="text" class="form-control @error('customer_phone') is-invalid @enderror" name="customer_phone" value="{{ old('customer_name') }}" required autocomplete="customer_phone" autofocus>
                                                 @error('customer_phone')
                                                 <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>

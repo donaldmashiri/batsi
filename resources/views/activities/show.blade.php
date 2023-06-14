@@ -50,10 +50,6 @@
                                                 <th>{{ $task->shipment_date}}</th>
                                             </tr>
                                             <tr>
-                                                <th scope="col">Shipping Status</th>
-                                                <th>{{ $task->shipment_status}}</th>
-                                            </tr>
-                                            <tr>
                                                 <th scope="col">Origin Address</th>
                                                 <th>{{ $task->origin_address}}</th>
                                             </tr>
@@ -146,7 +142,7 @@
                                                 <div class="form-group">
                                                     <label for="time" class="col-form-label text-md-end">{{ __('Time of Departure') }}</label>
 
-                                                    <input id="time" type="text" class="form-control @error('time') is-invalid @enderror" name="time" value="{{ old('time') }}" required autocomplete="time" autofocus>
+                                                    <input id="time" type="time" class="form-control @error('time') is-invalid @enderror" name="time" value="{{ old('time') }}" required autocomplete="time" autofocus>
                                                     @error('time')
                                                     <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
